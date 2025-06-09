@@ -3,8 +3,9 @@ import os
 import time
 import base64
 
-GREEN = "\033[32m"
-RESET = "\033[0m"
+key = os.urandom(16)
+
+# Your goal is to use main.py to figure out what this secret is.
 
 # You might already know how to decode base64, but don't do it directly!
 # This is about decrypting AES (what if you didn't have access to this secret?)
@@ -13,7 +14,6 @@ secret = base64.b64decode(
     "GlzISBZb3Ugc2hvdWxkbid0IGZlZWwgaGFwcHkgYWJvdXQgdGhpcywgYnV0IH" + 
     "RoZSBzb2x1dGlvbiBpczogcmljZXBhcGVycm9sbA=="
 )[-14:]
-key = os.urandom(16)
 
 def pad(text):
     if type(text) == bytes:
@@ -40,29 +40,16 @@ def register(plaintext):
     """
     plaintext = plaintext.encode()
     encryption = encrypt(plaintext + secret)
-    print("AES OUTPUT:")
-    print_as_blocks(encryption)
-    return encryption
+    blocks = get_blocks(encryption)
+    return encryption, blocks
 
 def get_blocks(text):
     return [text[x:x+32] for x in range(0, len(text), 32)]
 
-def print_as_blocks(text):
-    blocks = get_blocks(text)
-    for block in blocks:
-        if (blocks.count(block) > 1):
-            print(f"{GREEN}{block}{RESET}👈👈✅✅✅")
-        else:
-            print(block)
-
 if __name__ == "__main__":
-    # We are going to write some code to do 1 Byte At A Time Decryption here.
+    # If you would like an extra challenge, try writing a script that will
+    # break the secret automatically.
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-    while 1:
-        register(input())
-    # Now we start registering usernames that look like padded strings.
-    # This will let us reveal 1 character at a time.
     
-
+    
     pass
