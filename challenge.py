@@ -45,11 +45,3 @@ def register(plaintext):
 
 def get_blocks(text):
     return [text[x:x+32] for x in range(0, len(text), 32)]
-
-if __name__ == "__main__":
-    # If you would like an extra challenge, try writing a script that will
-    # break the secret automatically.
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    
-    
-    pass
