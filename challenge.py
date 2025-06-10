@@ -13,7 +13,7 @@ secret = base64.b64decode(
     "UGxlYXNlIGJybywgSSBiZWdnZWQgeW91IG5vdCB0byBkZWNvZGUgbGlrZSB0a" +
     "GlzISBZb3Ugc2hvdWxkbid0IGZlZWwgaGFwcHkgYWJvdXQgdGhpcywgYnV0IH" + 
     "RoZSBzb2x1dGlvbiBpczogcmljZXBhcGVycm9sbA=="
-)[-14:]
+)[-13:]
 
 def pad(text):
     if type(text) == bytes:
